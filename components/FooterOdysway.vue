@@ -94,6 +94,8 @@
         <v-divider
           thickness="2"
           class="my-10 my-md-16"
+          role="presentation"
+          aria-orientation="horizontal"
         />
         <v-row class="mb-4 pb-4 text-primary">
           <v-col

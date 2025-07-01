@@ -10,6 +10,7 @@
         alt="Image principale Hero d'Odysway"
         class="rounded-xl hero-height"
         cover
+        fetchpriority="high"
       >
         <template #placeholder>
           <div class="d-flex align-center justify-center fill-height">
