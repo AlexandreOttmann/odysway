@@ -27,7 +27,8 @@
 </template>
 
 <script setup>
-import _ from 'lodash'
+// import _ from 'lodash'
+import uniqBy from 'lodash/uniqBy'
 
 const route = useRoute()
 const slug = computed(() => route.params.destinationSlug)
@@ -77,7 +78,7 @@ const { data: voyages } = useAsyncData('voyages', async () => {
       v.destinations?.some(d => destinationNames.includes(d.name)),
     )
   }
-  return _.uniqBy(filtered, 'slug')
+  return uniqBy(filtered, 'slug')
 }, {
   watch: [slug, isDestination, isRegion, destinationsInRegion, selectedDestination, selectedRegion],
 })

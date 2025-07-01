@@ -111,10 +111,11 @@
 
 <script setup>
 import { useDisplay } from 'vuetify'
-import _ from 'lodash'
+// import _ from 'lodash'
+import uniqBy from 'lodash/uniqBy'
 import SearchField from '~/components/content/SearchField.vue'
 
-const { lgAndUp, mdAndDown } = useDisplay()
+const { lgAndUp } = useDisplay()
 useSeoMeta({
   htmlAttrs: {
     lang: 'fr',
@@ -257,7 +258,7 @@ const { data: voyages } = await useAsyncData(
     voyages = filterByType(voyages, travelType)
     voyages = filterByDate(voyages, fromList)
 
-    return _.uniqBy(voyages, 'slug')
+    return uniqBy(voyages, 'slug')
   },
   { watch: [routeQuery, regions, destinations] },
 )

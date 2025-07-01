@@ -146,7 +146,8 @@
 <script setup>
 import dayjs from 'dayjs'
 import { useGoTo } from 'vuetify'
-import _ from 'lodash'
+// import _ from 'lodash'
+import uniqBy from 'lodash/uniqBy'
 import { mdiMagnify, mdiFilterOutline, mdiMagnifyClose } from '@mdi/js'
 import { useImage } from '#imports'
 
@@ -212,7 +213,7 @@ const parsedPages = computed(() => {
 // Extract all unique categories
 const categoriesList = computed(() => {
   const allCategories = parsedPages.value.flatMap(page => page.categories)
-  return [...new Set(allCategories)].filter(Boolean)
+  return uniqBy([...new Set(allCategories)].filter(Boolean))
 })
 
 // Filter and sort blogs

@@ -80,7 +80,8 @@
 <script setup>
 import { useScroll, useElementSize } from '@vueuse/core'
 import { useDisplay } from 'vuetify'
-import _ from 'lodash'
+// import _ from 'lodash'
+import uniqBy from 'lodash/uniqBy'
 
 const route = useRoute()
 
@@ -107,7 +108,7 @@ const itemsList = ref(null)
 const { data: reviews } = await useAsyncData(`reviews-${route.params.voyageSlug}`, async () => {
   const collection = await queryCollection('reviews').where('voyageSlug', '=', route.params.voyageSlug).all()
 
-  return _.uniqBy(collection, 'text')
+  return uniqBy(collection, 'text')
 })
 
 // Initialize scroll setup function
