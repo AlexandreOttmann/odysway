@@ -1,19 +1,17 @@
 <template>
   <ClientOnly>
-    <iframe
-      data-tally-src="https://tally.so/embed/wQM8g1?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      loading="lazy"
-      width="100%"
-      height="1097"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
-      title="Créez votre voyage sur-mesure 🌍"
-    />
+    <LazyTallyFormWidget />
+    <template #fallback>
+      <v-skeleton-loader
+        type="card"
+        height="1097"
+      />
+    </template>
   </ClientOnly>
 </template>
 
 <script setup>
+// Load Tally script only when component is needed
 useHead({
   script: [
     {
@@ -22,6 +20,7 @@ useHead({
     },
   ],
 })
+
 onMounted(() => {
   if (typeof window !== 'undefined' && window.Tally) {
     window.Tally.loadEmbeds()

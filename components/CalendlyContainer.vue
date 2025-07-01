@@ -8,7 +8,15 @@
       data-url="https://calendly.com/odysway/15min?hide_gdpr_banner=1"
       style="min-width: 320px; height: 700px;"
     /> -->
-    <CalendlyInlineWidget v-bind="options" />
+    <ClientOnly>
+      <LazyCalendlyInlineWidget v-bind="options" />
+      <template #fallback>
+        <v-skeleton-loader
+          type="card"
+          height="700"
+        />
+      </template>
+    </ClientOnly>
   </v-container>
 </template>
 
@@ -28,7 +36,7 @@ const options = {
 }
 
 useCalendlyEventListener({
-  onEventScheduled: (event) => {
+  onEventScheduled: (_event) => {
     trackPixel('trackCustom', 'RDVCalendlyPris', { voyage: `RDVCalendlyPris: ${props.travelTitle}` })
   },
 })
