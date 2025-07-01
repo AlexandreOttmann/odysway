@@ -102,6 +102,27 @@ export default defineNuxtConfig({
         transformAssetUrls,
       },
     },
+    // Optimize build size
+    build: {
+      rollupOptions: {
+        external: [
+          // Exclude server-side database dependencies from client bundle
+          'sqlite3',
+          'better-sqlite3',
+          '@sqlite.org/sqlite-wasm',
+          'pg',
+        ],
+      },
+    },
+    optimizeDeps: {
+      exclude: [
+        // Prevent these from being included in client bundle
+        'sqlite3',
+        'better-sqlite3',
+        '@sqlite.org/sqlite-wasm',
+        'pg',
+      ],
+    },
   },
   calendly: {
     isEnabled: true,
