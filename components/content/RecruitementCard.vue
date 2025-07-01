@@ -11,6 +11,8 @@
           <a
             :href="link"
             target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="`Ouvrir le lien vers ${link}`"
           >
             <slot
               name="text"
@@ -26,6 +28,8 @@
         size="x-large"
         class="text-white"
         elevation="10"
+        :aria-label="`Accéder à ${link}`"
+        rel="noopener noreferrer"
       >
         <div class="text-white">
           <slot
