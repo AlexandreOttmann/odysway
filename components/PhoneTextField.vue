@@ -46,7 +46,7 @@ const { required } = defineProps({
     default: true,
   },
 })
-
+const emit = defineEmits(['validity-changed'])
 const schemaToRule = useZodSchema()
 const nameSchema = z.string().min(required ? 1 : 0, { message: 'Cette information est requise.' })
 const phoneSchema = z.string().min(9, { message: 'Numéro de téléphone invalide' })
@@ -62,6 +62,7 @@ const phoneNumber = ref('')
 
 watch([phoneCode, phoneNumber], () => {
   model.value = `${phoneCode.value}${phoneNumber.value}`
+  emit('validity-changed', rules.phone(phoneNumber.value) === true)
 })
 const phonesSelect = [
   {
