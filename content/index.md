@@ -38,6 +38,8 @@ schemaOrg:
     email: contact@odysway.com
     image: https://odysway.com/logos/logo_noir.png
 head:
+  htmlAttrs:
+    lang: fr
   script: []
 title: "Odysway : Voyages en immersion humaine et responsable"
 description: Odysway est une agence qui propose des voyages en immersion,
@@ -241,13 +243,13 @@ au cœur du voyage
     ::::voyage-col-card{slug="immersion-nomade-sahara"}
     ::::
   
-    ::::voyage-col-card{slug="voyage-immersion-colombie"}
-    ::::
+    <!-- ::::voyage-col-card{slug="voyage-immersion-colombie"}
+    :::: -->
   :::
 ::
 
 ::color-container{color="white"}
-  :::home-review-container
+  :::common-review-container
   #title
   [Ils en parlent mieux que nous]{style="color: rgba(43, 76, 82, 1)"}
   

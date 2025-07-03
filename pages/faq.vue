@@ -1,14 +1,20 @@
 <template>
-  <div>
+  <v-container
+    :fluid="width > 600"
+    class="py-0 my-0 px-2 px-md-9"
+  >
     <ContentRenderer
       v-if="page"
       :value="page"
     />
-  </div>
+  </v-container>
 </template>
 
 <script setup>
+import { useDisplay } from 'vuetify'
+
 const route = useRoute()
+const { width } = useDisplay()
 
 definePageMeta({
   layout: 'no-faq',
@@ -24,7 +30,7 @@ if (page.value) {
     // author: page.value?.ogImage?.author,
     // twitter: page.value?.ogImage?.twitter,
   })
-  useHead(page.value.head || {}) // <-- Nuxt Schema.org
+  useHead(page.value.head || { htmlAttrs: { lang: 'fr' } }) // <-- Nuxt Schema.org
   useSeoMeta(page.value.seo || {}) // <-- Nuxt Robots
 }
 </script>

@@ -6,16 +6,16 @@
     "step_final_rdv": "Rendez-vous"
   },
   "first_step": {
-    "title": "Où en êtes vous dans la préparation de ce voyage ?",
+    "title": "Où en êtes-vous dans la préparation de ce voyage ?",
     "option_1": "Je souhaite poser une option / réserver ce voyage",
     "option_2": "Poser une option sur ce voyage",
     "option_3": "Je souhaite prendre un rendez-vous avec un conseiller voyage"
   },
-  "calendly": "Merci de votre confiance ! L'aventure peut commencer ! Si vous le souhaitez, vous avez la possibilité de prendre un rendez-vous téléphonique avec l'un de nos conseillers. Nous répondrons à toutes vos questions sur le voyage.",
+  "calendly": "Merci pour votre demande ! Envie d’échanger plus en détail sur votre projet ? Prenez rendez-vous avec un conseiller Odysway !",
   "room_indiv_accroche": "Si vous partez seul, vous ne partagerez pas votre chambre avec d'autres voyageurs.",
   "room_indiv_text": "Si vous partez seul et que vous ne sélectionnez pas cette option, vous pourrez partager votre chambre avec un autre voyageur du même sexe.",
   "forced_indiv_room_text": "Texte chambre individuelle forcée",
-  "cancel_text": "Vous pouvez annuler gratuitement jusqu'à 30 jours avant le départ. Vous serez remboursé sous 7 jours (sans aucun frais retenu).",
+  "cancel_text": "Vous pouvez annuler gratuitement jusqu'à 30 jours avant le départ. Vous serez remboursé sous 7 jours sans frais (hors frais CB). ",
   "details": {
     "select_travelers_title": "Sélectionnez le nombre de voyageurs à régler",
     "nb_travelers_title": "Nombre de voyageurs",
@@ -28,7 +28,7 @@
     "firstname_placeholder": "Ex: Indiana",
     "lastname_placeholder": "Ex: Jones",
     "email_placeholder": "Ex: indiana@jones.com",
-    "newsletter_text": "Je souhaite recevoir des inspirations et des idées pour voyager autrement...",
+    "newsletter_text": "Je souhaite recevoir des inspirations et des idées pour voyager autrement !",
     "newsletter_label": "S'inscrire à la Newsletter"
   },
   "travelers_infos": {
@@ -78,7 +78,7 @@
     "amount_due": "Montant à régler",
     "already_paid_full": "Le voyage est déjà entièrement réglé",
     "full_payment_required": "Le départ du voyage a lieu dans moins de 30 jours, nous vous demandons de régler l'intégralité de la somme, sans acompte.",
-    "cancel_text": "Vous pouvez annuler gratuitement jusqu'à 30 jours avant le départ. Vous serez remboursé sous 7 jours (sans aucun frais retenu).",
+    "cancel_text": "Vous pouvez annuler gratuitement jusqu'à 30 jours avant le départ. Vous serez remboursé sous 7 jours sans frais (hors frais CB).",
     "forced_indiv_room_text": "Texte chambre individuelle forcée",
     "options_title": "Options",
     "early_bird_badge": "EarlyBird: -",
@@ -94,7 +94,9 @@
     "accept_country_conditions_text": "Je me suis renseigné sur les conditions d'entrée dans le pays où s'effectue le voyage",
     "option_already_placed_error": "Vous avez déjà posé une option pour cette date.",
     "place_option_button": "Poser une option gratuitement",
-    "pay_button": "Payer"
+    "pay_stripe_button": "Payer par CB ou Virement",
+    "pay_alma_button": "Payer en 3 fois avec Alma",
+    "alma_payment_info": "Le paiement en 3 fois est disponible uniquement pour les montants inférieurs à 4000€"
   },
   "navigation": {
     "next_button": "Suivant",

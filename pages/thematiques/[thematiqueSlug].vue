@@ -46,11 +46,19 @@ const { data: categorieContent, status: categorieContentStatus } = useAsyncData(
   watch: [slug],
 })
 provide('page', categorieContent)
-
+// #TODO OPTI THE LE CALL EN FAISANT UN SELECT DES PROPS NECESSAIRES
 const { data: voyages } = await useAsyncData('voyages', async () => {
-  const travelList = await queryCollection('voyages').where('published', '=', true).all()
+  const travelList = await queryCollection('voyages')
+    .where('published', '=', true)
+    .all()
   return travelList.filter(v => v.categories.some(c => c.name.includes(slug.value)))
 }, {
   watch: [slug],
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'fr',
+  },
 })
 </script>

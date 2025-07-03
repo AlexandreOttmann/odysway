@@ -34,6 +34,9 @@ definePageMeta({
   middleware: ['retrieve-existing-booked-date'],
 })
 useSeoMeta({
+  htmlAttrs: {
+    lang: 'fr',
+  },
   robots: 'noindex, follow',
   canonical: 'https://www.odysway.com/',
 })

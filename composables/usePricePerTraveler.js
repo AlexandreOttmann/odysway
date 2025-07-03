@@ -12,13 +12,19 @@ export function usePricePerTraveler(dynamicDealValues, voyage) {
     if (promoChildren && nbChildren) {
       price -= promoChildren * nbChildren
     }
+    if (promoChildren && nbChildren) {
+      price -= promoChildren * nbChildren
+    }
 
+    if (promoTeen && nbTeen) {
+      price -= promoTeen * nbTeen
+    }
     if (promoTeen && nbTeen) {
       price -= promoTeen * nbTeen
     }
 
     if (earlybirdAvailable === 'Oui' && promoEarlybird) {
-      price -= earlybirdAvailable * promoEarlybird * nbTravelers
+      price -= promoEarlybird * nbTravelers
     }
 
     if (lastMinuteAvailable === 'Oui' && promoLastMinute) {
