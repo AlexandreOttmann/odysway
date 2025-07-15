@@ -2,9 +2,9 @@
   <v-footer class="position-relative d-flex justify-center mt-md-10 ">
     <v-img
       class="footer-bg-img "
-      :src="img(OdyswayFooter, { format: 'webp', quality: 70, width: 1024, height: 400 })"
-      :lazy-src="img(OdyswayFooter, { format: 'webp', quality: 10, width: 1024, height: 400 })"
-      :srcset="`${img(OdyswayFooter, { format: 'webp', quality: 70, width: 1024, height: 400 })} 1024w, ${img(OdyswayFooter, { format: 'webp', quality: 70, width: 640, height: 400 })} 640w`"
+      :src="img('/logos/odysway-text.png', { format: 'webp', quality: 70, width: 1024, height: 400 })"
+      :lazy-src="img('/logos/odysway-text.png', { format: 'webp', quality: 10, width: 1024, height: 400 })"
+      :srcset="`${img('/logos/odysway-text.png', { format: 'webp', quality: 70, width: 1024, height: 400 })} 1024w, ${img('/logos/odysway-text.png', { format: 'webp', quality: 70, width: 640, height: 400 })} 640w`"
       sizes="(max-width: 600px) 480px, 1024px"
       cover
       loading="lazy"
@@ -29,9 +29,9 @@
             class="d-flex flex-column align-start align-md-start justify-space-between ga-3 ga-md-4 ga-lg-3"
           >
             <v-img
-              :src="img(OdyswayFooterBleu, { format: 'webp', quality: 70, width: 640 })"
-              :lazy-src="img(OdyswayFooterBleu, { format: 'webp', quality: 10, width: 640 })"
-              :srcset="`${img(OdyswayFooterBleu, { format: 'webp', quality: 70, width: 640 })} 640w, ${img(OdyswayFooterBleu, { format: 'webp', quality: 70, width: 1024 })} 1024w`"
+              :src="img('/logos/Logo-Odysway-Bleu.png', { format: 'webp', quality: 70, width: 640 })"
+              :lazy-src="img('/logos/Logo-Odysway-Bleu.png', { format: 'webp', quality: 10, width: 640 })"
+              :srcset="`${img('/logos/Logo-Odysway-Bleu.png', { format: 'webp', quality: 70, width: 640 })} 640w, ${img('/logos/Logo-Odysway-Bleu.png', { format: 'webp', quality: 70, width: 1024 })} 1024w`"
               sizes="(max-width: 600px) 480px, 640px"
               loading="lazy"
               :alt="footer.logo.description"
@@ -246,8 +246,6 @@
 
 <script setup>
 import { useImage } from '#imports'
-import OdyswayFooter from '~/assets/img/odysway-text.png'
-import OdyswayFooterBleu from '~/assets/img/Logo-Odysway-Bleu.png'
 
 const route = useRoute()
 const { data: footer } = useAsyncData('footer', () => queryCollection('footer').first())

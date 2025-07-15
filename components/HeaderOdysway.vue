@@ -11,7 +11,7 @@
         preload
         format="webp"
         quality="100"
-        :src="LogoOdyswayBleu"
+        src="/logos/Logo-Odysway-Bleu.png"
         width="320"
         alt="Logo principale d'Odysway"
         class="header-logo"
@@ -79,7 +79,7 @@
         preload
         format="webp"
         quality="100"
-        :src="LogoOdyswayBleu"
+        src="/logos/Logo-Odysway-Bleu.png"
         width="320"
         alt="Logo principale d'Odysway"
         class="header-logo"
@@ -138,8 +138,6 @@
 <script setup>
 import { mdiMenu } from '@mdi/js'
 // import { useDisplay } from 'vuetify'
-import LogoOdyswayBleu from '~/assets/img/Logo-Odysway-Bleu.png'
-
 const { header } = useAppConfig()
 
 const router = useRouter()
