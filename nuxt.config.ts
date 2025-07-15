@@ -13,12 +13,6 @@ export default defineNuxtConfig({
     'nuxt-calendly',
     'nuxt-gtag',
     'nuxt-meta-pixel',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error This come from Vuetify doc.
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
   ],
   components: [
     '~/components',
@@ -96,6 +90,9 @@ export default defineNuxtConfig({
     },
   },
   vite: {
+    plugins: [
+      vuetify({ autoImport: true }),
+    ],
     vue: {
       template: {
         transformAssetUrls,
