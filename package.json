@@ -29,6 +29,7 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "nuxt": "^3.17.7",
+    "nuxt-booster": "^3.2.9",
     "nuxt-calendly": "^0.1.21",
     "nuxt-gtag": "^3.0.2",
     "nuxt-meta-pixel": "^2.0.2",
