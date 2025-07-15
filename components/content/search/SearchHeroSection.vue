@@ -6,7 +6,7 @@
     :class="{ 'no-margin-bottom': noMarginBottom }"
   >
     <v-row
-      v-if="width > 960"
+      class="show-on-desktop"
     >
       <v-col
         cols="12"
@@ -73,14 +73,13 @@
       </v-col>
     </v-row>
     <v-img
-      v-else
       :src="img(destination ? destination.image?.src : '/images/homeHero.jpeg', { format: 'webp', quality: 80, height: 900, width: 1536 })"
       :lazy-src="img(destination ? destination.image?.src : '/images/homeHero.jpeg', { format: 'webp', quality: 10, height: 900, width: 1536 })"
       size="(max-width: 600) 480px, 1500px"
       :srcset="`${img(destination ? destination.image?.src : '/images/homeHero.jpeg', { format: 'webp', quality: 80, width: 640 })} 480w, ${img(destination ? destination.image?.src : '/images/homeHero.jpeg', { format: 'webp', quality: 80, width: 1024 })} 1500w`"
       height="50vh"
       :alt="destination ? destination.image?.alt : 'Image principale Hero d\'Odysway'"
-      class="rounded-md"
+      class="rounded-md show-on-mobile"
       cover
     >
       <template #placeholder>
@@ -150,7 +149,6 @@
 </template>
 
 <script setup>
-import { useDisplay } from 'vuetify'
 import { useImage } from '#imports'
 
 const { data: contentText } = await useAsyncData('page-search-search-hero', () =>
@@ -158,7 +156,6 @@ const { data: contentText } = await useAsyncData('page-search-search-hero', () =
 )
 
 const img = useImage()
-const { width } = useDisplay()
 const { destination, isCategory, isExperience, isNextDepartures, noMarginBottom } = defineProps({
   destination: {
     type: Object,
@@ -257,6 +254,20 @@ line-height: 50px;
     margin-bottom: 85px !important;
     font-size: 35px!important;
     line-height: 30px!important;
+  }
+}
+.show-on-desktop {
+  display: none;
+}
+.show-on-mobile {
+  display: flex;
+}
+@media (min-width: 960px) {
+  .show-on-desktop {
+    display: flex;
+  }
+  .show-on-mobile {
+    display: none;
   }
 }
 </style>

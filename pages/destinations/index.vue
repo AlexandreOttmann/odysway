@@ -1,6 +1,7 @@
 <template>
   <ContentLayout
     :display-divider="false"
+    :show-search-hero="false"
   >
     <v-row>
       <SearchHeroSection
@@ -8,10 +9,8 @@
       />
     </v-row>
 
-    <template
-      #indexContent
-    >
-      <div class=" pt-md-16">
+    <template #indexContent>
+      <div class="pt-md-16">
         <ContentRenderer
           v-if="page"
           :value="page"

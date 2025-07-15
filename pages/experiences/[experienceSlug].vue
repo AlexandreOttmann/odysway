@@ -33,7 +33,7 @@ const selectedExperience = computed(() => {
 
 const { data: voyages } = await useAsyncData('voyages', async () => {
   if (!selectedExperience.value?.title) return []
-  const travelList = await queryCollection('voyages').where('published', '=', true).where('experienceType', '=', selectedExperience.value.title).all()
+  const travelList = await queryCollection('voyages').where('published', '=', true).where('experienceType', '=', selectedExperience.value?.title).all()
   return travelList
 }, {
   watch: [slug],

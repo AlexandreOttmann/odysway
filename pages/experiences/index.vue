@@ -2,6 +2,7 @@
   <ContentLayout
     :is-experience="true"
     :page-content="pageContent"
+    :show-experiences="true"
   >
     <template #indexContent>
       <DisplayVoyagesRow
