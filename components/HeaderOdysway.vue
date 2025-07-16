@@ -137,7 +137,6 @@
 
 <script setup>
 import { mdiMenu } from '@mdi/js'
-// import { useDisplay } from 'vuetify'
 const { header } = useAppConfig()
 
 const router = useRouter()

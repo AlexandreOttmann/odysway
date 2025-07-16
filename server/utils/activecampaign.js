@@ -400,8 +400,8 @@ const recalculatTotalValues = async (dealId) => {
   // We need to recalculte the total value of the deal and the rest to pay.
   const customFields = await getDealCustomFields(dealId)
   const { deal } = await getDealById(dealId)
-  // console.log('===========deal in recalculatTotalValues', deal, '========')
-  // console.log('===========customFields in recalculatTotalValues', customFields, '========')
+  console.log('===========deal in recalculatTotalValues', deal, '========')
+  console.log('===========customFields in recalculatTotalValues', customFields, '========')
   const basePrice = customFields.basePricePerTraveler || 0
 
   const nbTravelers = customFields.nbTravelers || 0
@@ -413,29 +413,29 @@ const recalculatTotalValues = async (dealId) => {
   // const promoTeen = customFields.promoTeen || 0
   const promoEarlybird = customFields.gotEarlybird === 'Oui' ? customFields.promoEarlybird : 0
   const promoLastMinute = customFields.gotLastMinute === 'Oui' ? customFields.promoLastMinute : 0
-  // console.log('===========customFields.includeFlight', customFields.includeFlight, '========')
+  console.log('===========customFields.includedFlight', customFields.includedFlight, '========')
   const indivRoomPrice = customFields.indivRoom === 'Oui' ? (customFields.indivRoomPrice || 0) : 0
-  const flightPrice = customFields.includeFlight === 'Oui' ? (customFields.flightPrice || 0) : 0
+  const flightPrice = customFields.includedFlight === 'Oui' ? (customFields.flightPrice || 0) : 0
   const extensionPrice = customFields.extensionPrice || 0
   const insurancePrice = customFields.insurance ? customFields.insuranceCommissionPrice : 0
   const alreadyPaid = customFields.alreadyPaid || 0
 
-  // console.log('===========nbTravelers', nbTravelers, '========')
-  // console.log('===========nbChildren', nbChildren, '========')
-  // console.log('===========promoValue', promoValue, '========')
-  // console.log('===========promoChildren', promoChildren, '========')
-  // console.log('===========promoEarlybird', promoEarlybird, '========')
-  // console.log('===========promoLastMinute', promoLastMinute, '========')
-  // console.log('===========indivRoomPrice', indivRoomPrice, '========')
-  // console.log('===========basePrice', basePrice, '========')
-  // console.log('===========indivRoomPrice', indivRoomPrice, '========')
-  // console.log('===========flightPrice', flightPrice, '========')
-  // console.log('===========extensionPrice', extensionPrice, '========')
-  // console.log('===========insurancePrice', insurancePrice, '========')
-  // console.log('===========promoValue', promoValue, '========')
-  // console.log('===========promoChildren', promoChildren, '========')
-  // console.log('===========promoEarlybird', promoEarlybird, '========')
-  // console.log('===========promoLastMinute', promoLastMinute, '========')
+  console.log('===========nbTravelers', nbTravelers, '========')
+  console.log('===========nbChildren', nbChildren, '========')
+  console.log('===========promoValue', promoValue, '========')
+  console.log('===========promoChildren', promoChildren, '========')
+  console.log('===========promoEarlybird', promoEarlybird, '========')
+  console.log('===========promoLastMinute', promoLastMinute, '========')
+  console.log('===========indivRoomPrice', indivRoomPrice, '========')
+  console.log('===========basePrice', basePrice, '========')
+  console.log('===========indivRoomPrice', indivRoomPrice, '========')
+  console.log('===========flightPrice', flightPrice, '========')
+  console.log('===========extensionPrice', extensionPrice, '========')
+  console.log('===========insurancePrice', insurancePrice, '========')
+  console.log('===========promoValue', promoValue, '========')
+  console.log('===========promoChildren', promoChildren, '========')
+  console.log('===========promoEarlybird', promoEarlybird, '========')
+  console.log('===========promoLastMinute', promoLastMinute, '========')
 
   const value = (basePrice * nbTravelers)
     + indivRoomPrice * nbTravelers
@@ -447,21 +447,21 @@ const recalculatTotalValues = async (dealId) => {
     - (promoEarlybird * nbTravelers)
     - (promoLastMinute * nbTravelers)
 
-  // console.log('======== totalValue:', value, '========')
+  console.log('======== totalValue:', value, '========')
 
   const restToPay = value - alreadyPaid
 
-  // console.log('===========rest to pay', restToPay, '========')
-  // console.log('===========customFields.restToPay', customFields.restToPay, '========')
-  // console.log('===========value', value, '========')
-  // console.log('===========deal.value', deal.value, '========')
+  console.log('===========rest to pay', restToPay, '========')
+  console.log('===========customFields.restToPay', customFields.restToPay, '========')
+  console.log('===========value', value, '========')
+  console.log('===========deal.value', deal.value, '========')
   if (restToPay !== customFields.restToPay || deal.value !== value) {
     const formatedDeal = transformDealForAPI({
       value,
       restToPay,
       totalTravelPrice: value,
     })
-    // console.log('===========formatedDeal in activecampaign.js, update total value===========', formatedDeal)
+    console.log('===========formatedDeal in activecampaign.js, update total value===========', formatedDeal)
     return await apiRequest(`/deals/${dealId}`, 'put', formatedDeal)
   }
   else {
