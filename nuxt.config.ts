@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     'nuxt-calendly',
     'nuxt-gtag',
     'nuxt-meta-pixel',
+    'nuxt-purgecss',
   ],
   components: [
     '~/components',
@@ -77,7 +78,7 @@ export default defineNuxtConfig({
   },
   // ot sure this improve a lot.
   features: {
-    inlineStyles: false,
+    inlineStyles: true,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
@@ -91,6 +92,7 @@ export default defineNuxtConfig({
     },
   },
   vite: {
+
     plugins: [
       vuetify({ autoImport: true }),
     ],
