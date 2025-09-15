@@ -47,7 +47,10 @@
               sm="6"
               md="4"
             >
-              <VoyageCard :voyage="deal" />
+              <VoyageCard
+                :voyage="deal"
+                :next-departure-page="true"
+              />
             </v-col>
           </TransitionGroup>
           <v-col>

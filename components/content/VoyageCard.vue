@@ -120,7 +120,7 @@
                 class="text-body-1"
               >
                 <div class="mb-md-1 mr-2">
-                  {{ voyageCardContent?.discoverDates || 'Découvrir les dates' }}
+                  {{ buttonText }}
                 </div>
                 <v-icon
                   size="24px"
@@ -149,11 +149,15 @@
 
 <script setup>
 import { mdiPlusCircle } from '@mdi/js'
+import dayjs from 'dayjs'
 import { useImage } from '#imports'
 
 const props = defineProps({
   voyage: {
     type: Object,
+  },
+  nextDeparturePage: {
+    type: Boolean,
   },
 })
 
@@ -164,6 +168,15 @@ const { data: voyageCardContent } = await useAsyncData('voyage-card-content', ()
 )
 
 const actionColor = computed(() => props.voyage.groupeAvailable ? '#f7f8f8' : '#fef9f8')
+
+const buttonText = computed(() => {
+  if (props.nextDeparturePage) {
+    return `Du ${dayjs(props.voyage.dates[0].departure_date).format('DD MMMM')} 
+    au ${dayjs(props.voyage.dates[0].return_date).format('DD MMMM')}`
+  }
+
+  return (voyageCardContent?.discoverDates || 'Découvrir les dates')
+})
 </script>
 
 <style scoped>

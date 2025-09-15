@@ -20,11 +20,11 @@ const { data } = await useAsyncData(route.path, () => {
 })
 
 onMounted(() => {
-  trackPixel('trackCustom', 'BlogView', { titre: data.value.title })
+  trackPixel('trackCustom', 'BlogView', { titre: data.value?.title })
   gtag('event', 'page_view', {
     eventCategory: 'Blog',
     eventAction: 'View',
-    eventLabel: data.value.title })
+    eventLabel: data.value?.title })
 })
 
 watchEffect(() => {
