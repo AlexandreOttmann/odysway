@@ -222,16 +222,26 @@ const months = computed(() => {
 })
 
 const { data: destinations, destinationsStatus } = useAsyncData('destinations-in-search', () => {
-  return queryCollection('destinations').select('title', 'slug', 'metaDescription', 'published', 'regions', 'image', 'stem', 'isTopDestination').where('published', '=', true).all()
+  return queryCollection('destinations')
+    .select('title', 'slug', 'metaDescription', 'published', 'regions', 'image', 'stem', 'isTopDestination')
+    .where('published', '=', true)
+    .all()
 })
 const { data: regions, status: regionsStatus } = useAsyncData('regions', () => {
   return queryCollection('regions').select('nom', 'slug', 'meta_description').all()
 })
 
+const sortedDestinations = computed(() => {
+  if (destinations.value && Array.isArray(destinations.value)) {
+    return destinations.value.slice().sort((a, b) => a.title.localeCompare(b.title))
+  }
+  return []
+})
+
 const mappedDestinationsToRegions = computed(() => {
-  if (!regions.value || !destinations.value) return []
+  if (!sortedDestinations.value || !regions.value) return []
   // Create Top destination pseudo-region
-  const topDestinations = destinations.value.filter(d => d.isTopDestination)
+  const topDestinations = sortedDestinations.value.filter(d => d.isTopDestination)
   const topRegion = {
     title: searchFieldContent.value?.topDestinations || 'Top destinations',
     value: 'top-destination',
@@ -249,13 +259,15 @@ const mappedDestinationsToRegions = computed(() => {
     isTopDestination: true,
   })
 
+  topRegion.destinations.sort((a, b) => a.title.localeCompare(b.title))
+
   // Normal region mapping
   const regionGroups = regions.value.map((region) => {
     return {
       title: region.nom,
       value: region.slug,
       image: region.image,
-      destinations: destinations.value.filter(d => d.regions.some(r => r.nom === region.nom)),
+      destinations: sortedDestinations.value.filter(d => d.regions.some(r => r.nom === region.nom)),
     }
   })
   // filter out the france destination in the Europe region
