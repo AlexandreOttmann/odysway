@@ -143,13 +143,31 @@
             <span class="font-weight-bold">Niveau {{ level }}</span>
           </span>
         </v-chip>
+        <v-chip
+          v-if="minAge"
+          variant="flat"
+          size="large"
+          class="chip-responsive"
+          color="grey-light"
+          density="comfortable"
+        >
+          <span
+            class="d-flex align-center text-primary text-caption text-sm-subtitle-2  px-3 mb-1"
+          >
+            <v-icon
+              :icon="mdiHumanMaleChild"
+              class="mr-3 icon-responsive"
+            />
+            <span class="font-weight-bold">À partir de {{ minAge }} {{ minAge > 1 ? 'ans':'an' }}</span>
+          </span>
+        </v-chip>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
-import { mdiSignalCellular1, mdiSignalCellular2, mdiSignalCellular3 } from '@mdi/js'
+import { mdiSignalCellular1, mdiSignalCellular2, mdiSignalCellular3, mdiHumanMaleChild } from '@mdi/js'
 
 const { experienceType } = defineProps({
   badgeSection: {
@@ -163,6 +181,10 @@ const { experienceType } = defineProps({
   experienceType: {
     type: String,
     required: true,
+  },
+  minAge: {
+    type: Number,
+    required: false,
   },
 })
 
