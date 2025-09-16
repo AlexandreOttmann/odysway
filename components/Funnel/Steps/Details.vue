@@ -105,6 +105,7 @@
             >
               <PhoneTextField
                 v-model="model.phone"
+                @change="saveToLocalStorage()"
                 @validity-changed="isPhoneValid = $event"
               />
             </v-col>
