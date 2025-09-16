@@ -92,6 +92,8 @@ const travels = ref([])
 const toggledBtn = ref('all')
 const periodId = useId()
 const selectedPeriod = ref(route.query?.periode || null)
+const onlyGaranted = ref(route.query?.guaranted || null)
+
 const toggleBtns = ref([
   {
     value: 'all',
@@ -178,7 +180,24 @@ watch(() => route.query.type, (newType) => {
 const filteredTravels = computed(() => {
   const franceDealIso = 'FR'
   const queryType = toggledBtn.value
-  return travels.value.filter((travel) => {
+
+  let travelsToFilter = [...travels.value]
+  if (onlyGaranted.value) {
+    travelsToFilter = travels.value.map((travel) => {
+      // On filtre le tableau `dates` de chaque voyage.
+      // Ce nouveau tableau contient uniquement les dates avec le statut 'confirmed'.
+      const guaranteedDates = travel.dates.filter((date) => {
+        return date.displayed_status === 'confirmed'
+      })
+
+      return {
+        ...travel,
+        dates: guaranteedDates,
+      }
+    })
+  }
+  console.log(travelsToFilter)
+  return travelsToFilter.filter((travel) => {
     const iso = Array.isArray(travel.iso) ? travel.iso[0] : travel.iso
     if (queryType === 'france') {
       return iso === franceDealIso && travel.dates.length > 0 && travel.groupeAvailable

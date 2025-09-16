@@ -94,7 +94,8 @@ const scrollContainer = ref(null)
 const scrollElement = ref(null)
 
 const itemsList = useTemplateRef('items-list')
-const ctaContainer = useTemplateRef('cta-container')
+const slots = useSlots()
+const gotCtaSlot = computed(() => !!slots.cta)
 
 watch(scrollContainer, () => {
   nextTick(() => {
@@ -103,10 +104,6 @@ watch(scrollContainer, () => {
     }
   })
 }, { immediate: true, deep: true })
-
-const gotCtaSlot = computed(() => {
-  return ctaContainer.value?.children[0]
-})
 
 const childrenCount = computed(() => {
   return itemsList.value?.children[0]?.children.length

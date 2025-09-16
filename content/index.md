@@ -201,6 +201,15 @@ au cœur du voyage
   
     ::::voyage-col-card{slug="voyage-costa-rica-immersion-communaute-locale"}
     ::::
+
+  #cta
+    ::::next-garanted-button
+    ---
+    color: primary
+    ---
+    #text
+    Voir tous les departs garantis
+    ::::
   :::
 ::
 
