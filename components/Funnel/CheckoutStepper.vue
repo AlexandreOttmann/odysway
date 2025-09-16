@@ -441,7 +441,7 @@ watch(() => [dynamicDealValues.value?.nbAdults, dynamicDealValues.value?.nbChild
 // Computed property to determine if insurance step should be shown
 const showInsuranceStep = computed(() => {
   return insurancesPrice.value
-    && (insurancesPrice.value.rapatriement || insurancesPrice.value.cancel)
+    && (insurancesPrice.value.rapatriement || insurancesPrice.value.cancel) && checkoutType.value !== 'balance'
 })
 </script>
 
