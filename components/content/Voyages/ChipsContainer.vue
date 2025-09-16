@@ -133,12 +133,17 @@
           color="grey-light"
           density="comfortable"
         >
-          <span class="d-flex align-center text-primary text-caption text-sm-subtitle-2  px-3 mb-1">
-            <v-icon
+          <span class="d-flex align-center text-primary text-caption text-sm-subtitle-2 px-3 mb-1">
+            <v-img
+              :src="levelIcon.icon"
+              class="mr-3 icon-responsive"
+              :alt="levelIcon.alt"
+            />
+            <!-- <v-icon
               :icon="level === '1' ? mdiSignalCellular1 : level === '2' ? mdiSignalCellular2 : mdiSignalCellular3"
               class="mr-3 icon-responsive"
               :alt="`Icone d'un niveau de difficulté ${level}`"
-            />
+            /> -->
 
             <span class="font-weight-bold">Niveau {{ level }}</span>
           </span>
@@ -167,9 +172,9 @@
 </template>
 
 <script setup>
-import { mdiSignalCellular1, mdiSignalCellular2, mdiSignalCellular3, mdiHumanMaleChild } from '@mdi/js'
+import { mdiHumanMaleChild } from '@mdi/js'
 
-const { experienceType } = defineProps({
+const { experienceType, level } = defineProps({
   badgeSection: {
     type: Object,
     required: true,
@@ -177,6 +182,7 @@ const { experienceType } = defineProps({
   level: {
     type: String,
     required: true,
+    validator: value => ['1', '2', '3', '4', '5'].includes(value),
   },
   experienceType: {
     type: String,
@@ -189,6 +195,14 @@ const { experienceType } = defineProps({
 })
 
 const experience = await queryCollection('experiences').where('title', '=', experienceType).select(['badgeTitle']).first()
+
+const levelIcon = computed(() => {
+  return { icon: `/icons/level-${level}.svg`,
+    alt: `Icone d'un niveau de difficulté ${level}`,
+  }
+})
+
+console.log('level icon path ', levelIcon.value)
 </script>
 
 <style scoped>
