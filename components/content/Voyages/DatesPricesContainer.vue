@@ -121,16 +121,10 @@ watch(isExpanded, (newValue) => {
 })
 
 const sortedByDates = computed(() => {
-  return dates.value
-    .filter(date => dayjs(date.departure_date).isAfter(dayjs()))
-    .sort((a, b) => dayjs(a.departure_date).diff(dayjs(b.departure_date)))
+  return [...dates.value].sort((a, b) => dayjs(a.departure_date).diff(dayjs(b.departure_date)))
 })
 
 const limitedDatesList = computed(() => {
-  // const sortedByDates = dates.value
-  //   .filter(date => dayjs(date.departure_date).isAfter(dayjs()))
-  //   .sort((a, b) => dayjs(a.departure_date).diff(dayjs(b.departure_date)))
-  // console.log('sortedByDates', sortedByDates)
   return sortedByDates.value.slice(0, isExpanded.value ? sortedByDates.value.length : 3)
 })
 </script>

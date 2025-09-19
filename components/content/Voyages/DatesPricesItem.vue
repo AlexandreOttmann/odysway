@@ -46,6 +46,7 @@
         <BookingStatus
           :status="enrichedDate.status"
           :booked-places="enrichedDate.status.status === 'full' ? enrichedDate.max_travelers : enrichedDate.booked_seat"
+          :nb-interested-by="enrichedDate.nbInterestedBy"
           :max-travellers="enrichedDate.max_travelers"
           :min-travellers="enrichedDate.min_travelers"
         />
@@ -240,7 +241,8 @@ const enrichedDate = computed(() => {
     ...date,
     min_travelers: date.custom_display ? date.displayed_min_travelers : date.min_travelers,
     max_travelers: date.custom_display ? date.displayed_max_travelers : date.max_travelers,
-    booked_seat: date.custom_display ? date.displayed_booked_seat : date.booked_seat,
+    booked_seat: date.custom_display ? date.displayed_booked_seat || 0 : date.booked_seat, // displayed_booked_seat peut être NULL apparement (travel_dates id : fa781085-9d66-4dac-9e9d-8a3dba44fd61)
+    nbInterestedBy: date.nbInterestedBy,
     include_flight: date.custom_display ? date.displayed_include_flight : date.include_flight,
     badges: date.custom_display ? (date.displayed_badges || '') : (date.badges || ''),
     starting_price: date.custom_display ? date.displayed_starting_price : date.starting_price,
