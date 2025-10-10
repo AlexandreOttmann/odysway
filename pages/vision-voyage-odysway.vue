@@ -59,9 +59,7 @@ const pageQuery = `
     }
   },
   heroSection{
-    title,
-    titleColor,
-    "imageUrl": image.asset->url,
+    ...,
   },
   priseDeConscience{
     content
