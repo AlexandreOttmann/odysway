@@ -19,6 +19,7 @@
           mdc-unwrap="p"
           name="text"
         />
+        {{ text }}
       </div>
     </v-btn>
     <v-btn
@@ -33,6 +34,7 @@
           mdc-unwrap="p"
           name="text"
         />
+        {{ text }}
       </div>
     </v-btn>
   </div>
@@ -55,6 +57,9 @@ defineProps({
   external: {
     type: Boolean,
     default: false,
+  },
+  text: {
+    type: String,
   },
 })
 const { gtag } = useGtag()
