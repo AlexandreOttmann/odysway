@@ -1,15 +1,20 @@
 <template>
   <div>
-    <ContentRenderer
-      v-if="page && status === 'success'"
-      :value="page"
-    />
-    <div
-      v-else-if="status === 'pending'"
-      class="d-flex justify-center align-center"
-    >
-      <v-progress-circular indeterminate />
-    </div>
+    <HeroSection :image-src="page.heroImage">
+      <template #title>
+        {{ page.title }}
+      </template>
+    </HeroSection>
+    <SectionContainer>
+      <template #content>
+        <EnrichedText :value="page.content" />
+        <CtaButton
+          :external="page.ctaButton.external"
+          :link="page.ctaButton.link"
+          :text="page.ctaButton.text"
+        />
+      </template>
+    </SectionContainer>
   </div>
 </template>
 
@@ -18,8 +23,16 @@ definePageMeta({
   layout: 'simple-pages',
 })
 
-const route = useRoute()
-const { data: page, status } = useAsyncData(route.path, () => {
-  return queryCollection('content').path(route.path).first()
+const pageQuery = `
+*[_type=="surMesure"][0]{
+  ...
+}
+`
+const { data: page } = await useSanityQuery(pageQuery, {}, {
+  key: 'sur-mesure-page',
+  getCachedData: (key) => {
+    return useNuxtApp().payload.data[key] || useNuxtApp().static.data[key]
+  },
 })
+console.log('page ', page.value)
 </script>
